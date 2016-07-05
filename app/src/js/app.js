@@ -1,23 +1,30 @@
 var app = angular.module('myApp', ['ui.router', 'myAppCtrls']);
 
 
-
+app.run(function($rootScope, $state, $stateParams) {
+    $rootScope.$state = $state;
+    $rootScope.$stateParams = $stateParams;
+});
 
 /**
  * 配置路由
  */
 app.config(function($stateProvider, $urlRouterProvider) {
-  console.log(123);
-    $urlRouterProvider.otherwise('/index');
+    console.log(123);
+    $urlRouterProvider.otherwise('/1');
     $stateProvider
         .state('index', {
-            url: '/index',
-            templateUrl: 'tpls/page1.html',
-            controller:'pageCtrl'
-        })
-        .state('index2',{
-          url:'/index2',
-          templateUrl:'tpls/page2.html',
-          controller:'page2Ctrl'
+            url: '/{pageIndex:[0-9]{1,4}}',
+            views: {
+                '': {
+                    templateUrl: 'tpls/pageContent.html'
+                },
+                'pageType@index': {
+                    templateUrl: 'tpls/menu.html'
+                },
+                'pageContent@index': {
+                    templateUrl: 'tpls/page.html'
+                }
+            }
         });
 });
