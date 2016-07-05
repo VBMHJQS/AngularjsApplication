@@ -1,4 +1,4 @@
-var app = angular.module('myApp', ['ui.router', 'myAppCtrls', 'myAppServices']);
+var app = angular.module('myApp', ['ui.router', 'myAppCtrls']);
 
 
 

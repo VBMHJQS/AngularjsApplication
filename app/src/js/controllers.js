@@ -1,7 +1,7 @@
 var myAppControllers = angular.module('myAppCtrls', []);
-myAppControllers.controller('pageCtrl', ['$scope', function($scope) {
+myAppControllers.controller('pageCtrl', ['$scope','serviceTest', function($scope,serviceTest) {
     $scope.test = {
-        name: 'wangxc'
+        name: serviceTest.name
     };
 }]);
 
